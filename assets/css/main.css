@@ -1,0 +1,89 @@
+
+
+:root, * {
+    font-size: 27px;
+    font-family: "Minecraft";
+    text-shadow: 4px 4px 0px #5a5a5a;
+    --grey_color: rgb(182, 182, 182);
+}
+body {
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/cube.png");
+    background-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    position: absolute;
+    top: 3%;
+    color: white;
+}
+
+#form {
+    width: 600px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    color: var(--grey_color);
+    margin-bottom: 170px;
+}
+
+input {
+    background-color: black;
+    border: 2px solid var(--grey_color);
+    padding: 12px 14px;
+    color: white;
+    margin-top: 16px;
+    transition: border-color 75ms linear;
+    
+}
+
+input:focus {
+    outline: none;
+    border-color: white;
+}
+
+button {
+    --linear_bg_color:rgba(71, 71, 71, 0.5);
+    color: white;
+    border: 3px solid black;
+    padding: 6px;
+    background-image:
+        linear-gradient(45deg, var(--linear_bg_color), var(--linear_bg_color)),
+        url("../images/stone_texture.webp");
+    background-size: 51px;
+    transition: filter 75ms linear;
+    
+
+}
+button:hover:not(:disabled) {
+    border-color: white;
+}
+
+
+button:disabled {
+    filter: brightness(0.4);
+
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media screen and (max-width: 630px) 
+{
+    #form
+    {
+        width: 90%;
+    }
+
+    
+}

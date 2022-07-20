@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft</title>
+    <link rel="stylesheet" href="assets/css/font_faces.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+<body>
+
+<h1>Connexion rapide</h1>
+    
+<form id="form">
+   
+    <label>
+        Adresse du serveur
+        <input type="text" id="address">
+    </label>
+
+    <div id="buttons">
+
+    <button disabled id="joinButton" type="submit">
+        Rejoindre
+    </button>
+
+    <button>
+        Annuler
+    </button>
+
+    </div>
+
+</form>
+<script>
+    var inputAdress = document.getElementById("address");
+    var joinButton = document.getElementById("joinButton");
+    var form = document.getElementById("form");
+
+    /**
+     * Manage the state of the join button
+     */
+    inputAdress.addEventListener("keydown", function(event){
+        var inputValue = event.target.value;
+        
+        if (event.code == "Enter" && inputValue.length > 0)
+        {
+            form.submit()
+        }
+        
+
+        if (
+             event.code == "ShiftLeft" ||event.key == "ShiftRight"
+            ) {
+                return;
+            }
+
+            var notAllowedKeyboardKeys = ["ControlLeft", "ControlRight", "AltLeft", "AltRight", "MetaLeft", "MetaRight"];
+
+        if (notAllowedKeyboardKeys.includes(event.code)) {
+            return;
+        }
+        
+        if (event.key == "Backspace" && inputValue.length <= 1) {
+            joinButton.disabled = true;
+        }
+        else {
+            joinButton.disabled = false;
+        }
+
+    });
+    
+
+
+    form.addEventListener("submit",function (event) {
+        event.preventDefault()
+        var inputValue = inputAdress.value;
+        var urlCheckerRegex = new RegExp(/^http[s]?/gi);
+        
+        if (urlCheckerRegex.test(inputValue))
+        {
+            window.open(inputValue,"_blank");
+        }
+        else 
+        {
+            var url = "https://" + inputValue;
+            window.open(url,"_blank");  
+        }
+
+       
+    });
+
+</script>
+</body>
+</html>
